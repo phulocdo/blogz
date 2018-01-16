@@ -1,13 +1,9 @@
 {% extends 'base.html' %}
 
-{% block menu %}
-   <li id="mouse-over"><a href="{{ url_for('home') }}">Home</a></li>
-   <li id="mouse-over"><a href="{{ url_for('blog') }}">Main Blog</a></li>
-{% endblock %}
 
 {% block container %}
   <div class="breadcrumb-item">
-    <h2>Add a Blog Entry</h2>
+    <h2 class="family-font">Add a Blog Entry</h2>
   </div>
 {% endblock %}
 
@@ -17,7 +13,8 @@
 		   {{ form.hidden_tag() }}
 		<div class="form-group">
     		   <p>{{ form.subject.label}}<br> 
-	           {{form.subject(cols='80',class="form-control")}} 
+	           {{form.subject(cols='40')}} 
+	           <!--{{form.subject(cols='40',class="form-control")}} !--> 
 
 		   {% for error in form.subject.errors %} 
 		       <br><small style="color: red">{{error}}</small> 

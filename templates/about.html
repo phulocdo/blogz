@@ -1,15 +1,10 @@
 {% extends 'base.html' %}
 
-{% block menu %}
-   <li id="mouse-over"><a href="{{ url_for('home') }}">Home</a></li>
-   <li id="mouse-over"><a href="{{ url_for('login') }}">Login</a></li>
-{% endblock %}
-
 {% block content %}
-    <h2>Hello</h2>
+    <h2 class="family-font">Hello</h2>
     <p>Welcome to the blog! This is a very simple blog using Flask. Any comments, feedback or suggestions to improve the app would greatly be appreciated. Thank you for visiting!</h3>
 {% endblock %}
 
 {% block foot %}
-   <p id="email">&ee;&mopf;&aopf;&ImaginaryI;&lopf;:philip.loc.do@gmail.com</p>
+   <p><a href="#"><span class="glyphicon glyphicon-envelope"></span> philip.loc.do@gmail.com</a></p>
  {% endblock %}

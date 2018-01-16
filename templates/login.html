@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
-{% block menu %}
-   <li id="mouse-over"><a href="{{ url_for('home') }}">Home</a></li>
-{% endblock %}
 
 {% block content %}
-	<div class="container">
-	  <h2 style="text-align: center">Login</h2>
-       	<fieldset>
-           <form  method="POST" action="{{ url_for('login') }}">
+	<!--<div class="row justify-content-center">
+	  <div class="col-lg-4 col-md-6 col-sm-8">
+        !-->
+	    <div class="card">
+	      <div class="card-body">
+	  	 <h2 class="card-title family-font">Login</h2>
+           	 <form  method="POST" action="{{ url_for('login') }}">
 		   {{ form.hidden_tag() }}
 		   {% if error %}
 		      <p style="color: red"><strong>Error:</strong>{{error}}</p>
@@ -29,12 +29,16 @@
 		   {% endfor %}</p>
 
     		   <p>{{form.login}}</p>
-             </form>
+                 </form>
+	     </div>
              <div class="card-footer text-muted text-center" style="color: blue">
                Haven't got an account? <a href="{{ url_for('signup') }}">SignUp</a>
              </div>
-	  </fieldset>
+	  </div>
+<!--
 	</div>
+     </div>
+!-->
 {% endblock %}
 
 

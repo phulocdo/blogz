@@ -8,7 +8,7 @@ from wtforms import TextField, TextAreaField, SubmitField, PasswordField, valida
    space and invalid characters,etc...
 """
 
-class CreateForm(FlaskForm):
+class Forms(FlaskForm):
     username = TextField('Username', validators=[
         validators.Length(min=3,max=20,message="Username must be between 3 and 30 characters long"), 
         validators.Required("User name is required"),
@@ -37,14 +37,14 @@ class CreateForm(FlaskForm):
     login = SubmitField('Login')
 
 
-class NewPost(FlaskForm):
+class Posts(FlaskForm):
     subject = TextField('Subject', validators=[
         validators.Length(min=1, max=50, message="Subject must be between 1 and 50 characters long"),
         validators.Required("Subject is required")
     ])
 
     message = TextAreaField('Message', validators=[
-        validators.Length(min=1, max=200, message="Message must be between 1 and 200 characters long"),
+        validators.Length(min=1, message="Message must be at least one character long"),
         validators.Required('Message is required')
     ])
     

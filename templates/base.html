@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog App</title>
+    <title>{% block title %}Flask Blog{% endblock %}</title>
     <link href="https://fonts.googleapis.com/css?family=Peralta" rel="stylesheet"> 
-    <link rel"stylesheet" type="text/css" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
 
-    <header>
-      <div class="container">
-        <h1 class="logo" >Flask Blog</h1>
-        <nav>
-  	  <ul class="menu">
-	    {% block menu %}
-	    {% endblock %}
-    	  </ul>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+       <div class="navbar-header">
+         <a class="navbar-brand" href="{{ url_for('home') }}">Flask Blog</a>
+       </div>
+       
+       {% if user_auth %}
+ 	<ul class="nav navbar-nav navbar-right">
+           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{user_auth}}<span class="caret"></span></a>
+             <ul class="dropdown-menu">
+               <li><a href="{{ url_for('home') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+	       <li><a href="{{ url_for('blog') }}"><span class="glyphicon glyphicon-list-alt"></span> Main blog</a></li>
+               <li><a href="{{ url_for('post') }}"><span class="glyphicon glyphicon-edit"></span> Add blog</a></li>
+               <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+       
+      {% else %} 
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{{ url_for('signup') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	    <li><a href="{{ url_for('blog') }}"><span class="glyphicon glyphicon-list-alt"></span> Blog</a></li>
+	    <li><a href="{{ url_for('about') }}"><span class="glyphicon glyphicon-comment"></span> About</a></li>
+          </ul>
+     {% endif %}
 
-        </nav>
-      </div>
-    </header>
-    
+     </div>
+   </nav>
+
     <div class="container">
       {% block container %}
       {% endblock %}
@@ -31,10 +51,12 @@
       {% endblock %}
     </div>
 
+
   </body>
+
   <footer class="center">
     {% block foot %}
     {% endblock %} 
-
   </footer>
+
 </html>

@@ -1,14 +1,52 @@
 {% extends 'base.html' %}
 
-{% block menu %}
-   <li id="mouse-over"><a href="{{ url_for('blog') }}">Main Blog</a></li>
-   <li id="mouse-over"><a href="{{ url_for('post') }}">Add a Blog Entry</a></li>
-{% endblock %}
-
 
 {% block content %}
-    <h2 style="text-align: center">{{entry.subject}}</h2>
-    <p>{{entry.message}}</p>
+ {% if query_by == "author" %} <!-- query post by author !-->
+  <div class="breadcrumb-item">
+    <h2 class="family-font">Blog Posts</h2>
+    <p style="text-align: center">Sort by:<small><a href="/blog?sort=newest&uname={{posts[0].owner.username}}">newest</a>|<a href="/blog?sort=oldest&uname={{posts[0].owner.username}}">oldest</a></small></p>
+   </div>
+
+   <div class="container">
+    <table class="table table-bordered table-hover">
+     <thead class="thead-inverse">
+      <tr>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>Posted</th>
+     </tr>
+     </thead>
+     <tbody>
+
+     {% if last_post > -1 %}
+        {% for i in  range(last_post,-1,-1) %}
+         <tr>
+            <td><h3><small><a href="/blog?id={{posts[i].id}}">{{posts[i].subject}}</a></small></h3></td>
+            <td>{{posts[i].message}}</td>
+            <td>{{posts[i].create_date}} by <a href="/blog?user={{posts[i].owner.username}}">{{posts[i].owner.username}}</a></td>
+         </tr>
+        {% endfor %}
+     {% else %}
+
+       {% for post in  posts%}
+         <tr>
+            <td><h3><small><a href="/blog?id={{post.id}}">{{post.subject}}</a></small></h3></td>
+            <td>{{post.message}}</td>
+            <td>{{post.create_date}} by <a href="/blog?user={{post.owner.username}}">{{post.owner.username}}</a></td>
+         </tr>
+       {% endfor %}
+     {% endif %}
+     </tbody>
+   </table>
+ </div>
+
+  {% else %}  <!-- render entry for new post !-->
+        <h2 style="text-align: center">{{posts.subject}}</h2>
+        <p>{{posts.message}}</p>
+        <h4>Posted By: <a href="/blog?user={{posts.owner.username}}">{{posts.owner.username}}</a></h4>
+
+  {% endif %}
 
 {% endblock %}
 

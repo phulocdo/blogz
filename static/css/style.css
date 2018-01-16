@@ -13,10 +13,14 @@ body {
 body p {
   margin: 10px;
 }
+
+h4 {
+  margin: 10px;
+}
  
 /*
- *  * Create dark grey header with a white logo
- *   */
+ *  *  * Create dark grey header with a white logo
+ *   *   */
   
 header {
   background-color: #2B2B2B;
@@ -40,8 +44,8 @@ header h1.logo:hover {
 }
  
 /*
- *  * Center the body content
- *   */
+ *  *  * Center the body content
+ *   *   */
   
 .container {
   width: 940px;
@@ -55,6 +59,11 @@ div.jumbo {
      -moz-border-radius: 6px;
           border-radius: 6px;
 }
+
+
+.family-font {
+  font-family: 'Peralta', cursive;
+}
  
 h2 {
   font-size: 2em;
@@ -65,7 +74,7 @@ h2 {
 }
  
 h3 {
-  font-size: 1.7em;
+  font-size: 1.2em;
   font-family: 'Peralta', cursive;
   font-weight: 100;
   margin-top: 30px;
@@ -76,8 +85,8 @@ h3 {
 
 
 /*
- *  * Display navigation links inline
- *   */
+ *  *  * Display navigation links inline
+ *   *   */
  
 .menu {
   float: right;
@@ -144,4 +153,40 @@ th, td {
 
 html {
   height: 100%;
+}
+
+
+.pagination {
+    margin: 40px ;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.pagination-page-info {
+    padding: .6em;
+    padding-top: 5px;
+    padding-bottom: 0;
+    padding-left: 0;
+    width: 40em;
+    margin: .5em;
+    margin-left: 0;
+    font-size: 12px;
+}
+.pagination-page-info b {
+    color: black;
+    background: #6aa6ed;
+    padding-left: 2px;
+    padding: .1em .25em;
+    font-size: 150%;
+}
+
+.error {
+  color: red;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: auto;
+    text-align: left;
 }
